@@ -1,0 +1,56 @@
+/* ==========================================================
+   FILE: demo-animations.css | ARQUIVO: demo-animations.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: animate composited properties with restrained timing | PROPÓSITO: animar propriedades compostas com moderação
+   TECHNIQUES: keyframes, cubic-bezier, animation-delay | TÉCNICAS: keyframes, cubic-bezier, animation-delay
+   USED IN: motion samples | USADO EM: amostras de movimento
+   ========================================================== */
+@layer demos {
+  .motion-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    align-items: center;
+  }
+  .motion-dot {
+    --item-index: 0;
+    inline-size: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-coral);
+    animation: drift 1.8s var(--ease-standard) infinite alternate;
+    animation-delay: calc(var(--item-index, 0) * 120ms);
+  }
+  .motion-dot--second {
+    --item-index: 1;
+  }
+  .motion-dot--third {
+    --item-index: 2;
+  }
+  /* EN: will-change is limited to this short-lived sample to avoid reserving layers site-wide.
+     PT: will-change fica restrito a esta amostra para não reservar camadas na página inteira. */
+  .motion-dot--hint {
+    will-change: transform;
+  }
+  @keyframes drift {
+    to {
+      transform: translateY(-1rem) scale(1.12);
+      opacity: 0.72;
+    }
+  }
+  .motion-bar {
+    inline-size: 100%;
+    block-size: 0.45rem;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-coral));
+    transform-origin: inline-start;
+    animation: grow 1.4s var(--ease-elastic) both;
+  }
+  @keyframes grow {
+    from {
+      transform: scaleX(0.08);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}

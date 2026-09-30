@@ -1,0 +1,39 @@
+/* ==========================================================
+  FILE: accessibility.css | ARQUIVO: accessibility.css
+  LAYER: @layer base | CAMADA: @layer base
+  PURPOSE: preserve focus, helper text, and motion access | PROPÓSITO: manter foco e movimento acessíveis
+  TECHNIQUES: :focus-visible, sr-only, prefers-reduced-motion | TÉCNICAS: :focus-visible, sr-only, prefers-reduced-motion
+  USED IN: navigation and controls | USADO EM: navegação e controles
+   ========================================================== */
+@layer base {
+  :where(:focus-visible) {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 4px;
+  }
+  .sr-only {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    /* EN: !important prevents utility styles from exposing visually-hidden labels.
+       PT: !important impede utilitários de revelar rótulos ocultos visualmente. */
+    clip-path: inset(50%) !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* EN: Essential state changes remain, while nonessential motion is removed.
+       PT: Mudanças essenciais de estado permanecem, mas movimentos não essenciais são removidos. */
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+/* ==========================================================
+  FILE: typography.css | ARQUIVO: typography.css
+  LAYER: @layer base | CAMADA: @layer base
+  PURPOSE: set a fluid, readable type rhythm | PROPÓSITO: definir ritmo tipográfico fluido e legível
+  TECHNIQUES: clamp(), ch, text-wrap | TÉCNICAS: clamp(), ch, text-wrap
+  USED IN: all section content | USADO EM: conteúdo de todas as seções
+   ========================================================== */
+@layer base {
+  /* EN: local() uses an installed font only; the full system stack remains the reliable fallback.
+     PT: local() usa apenas uma fonte instalada; a pilha do sistema continua como fallback confiável. */
+  @font-face {
+    font-family: "Showcase Mono";
+    src: local("Cascadia Code");
+    font-display: swap;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.08;
+  }
+  /* EN: Balanced headings avoid short orphan lines; unsupported engines keep normal wrapping.
+      PT: Títulos equilibrados evitam linhas órfãs; navegadores incompatíveis mantêm a quebra normal. */
+  h1 {
+    font-size: var(--text-display);
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: var(--text-xl);
+    text-wrap: balance;
+  }
+  h3 {
+    font-size: var(--text-lg);
+  }
+  p {
+    max-inline-size: 68ch;
+    text-wrap: pretty;
+  }
+  .type-sample__excerpt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    max-inline-size: min(100%, 52ch);
+    max-block-size: calc(3 * 1lh);
+    overflow: clip;
+    font-variant-numeric: tabular-nums;
+  }
+  code,
+  pre {
+    font-family: "Showcase Mono", var(--font-mono);
+  }
+  :lang(pt-BR) {
+    hyphens: auto;
+  }
+}

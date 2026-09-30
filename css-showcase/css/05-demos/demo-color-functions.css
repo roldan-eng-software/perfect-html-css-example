@@ -1,0 +1,183 @@
+/* ==========================================================
+   FILE: demo-color-functions.css | ARQUIVO: demo-color-functions.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: compare modern color spaces and gradient interpolation | PROPÓSITO: comparar cores modernas e interpolação
+   TECHNIQUES: @property, oklch(), color-mix() | TÉCNICAS: @property, oklch(), color-mix()
+   USED IN: color demo | USADO EM: demonstração de cores
+   ========================================================== */
+@property --demo-angle {
+  /* EN: A typed angle can interpolate smoothly instead of jumping as unregistered text.
+     PT: Um ângulo tipado interpola suavemente em vez de saltar como texto não registrado. */
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@layer demos {
+  /* EN: Layered gradients make a local, lightweight hero backdrop without image requests.
+     PT: Gradientes em camadas criam um fundo leve para o hero sem requisições de imagem. */
+  /* EN: min() and max() bound viewport-based sizing so the hero stays useful on short and tall screens.
+      PT: min() e max() limitam o tamanho pela viewport para manter o hero útil em telas baixas e altas. */
+  .hero {
+    counter-increment: showcase-section;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-block-size: min(max(62svh, 24rem), 42rem);
+    display: grid;
+    align-items: center;
+    padding-block: clamp(var(--space-5), 5vw, var(--space-7));
+  }
+  .hero h1 {
+    font-size: clamp(2.65rem, 7vw, 5.5rem);
+  }
+  .hero h1::before {
+    display: block;
+    margin-block-end: var(--space-2);
+    color: var(--color-accent);
+    font: 600 var(--text-sm) var(--font-mono);
+    content: counter(showcase-section, decimal-leading-zero) " /";
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(120deg, var(--color-bg), var(--color-soft));
+  }
+  /* EN: Layered radial and conic fields add depth over the linear fallback without image downloads.
+     PT: Campos radial e cônico adicionam profundidade sobre o fallback linear sem baixar imagens. */
+  .hero::before {
+    background:
+      radial-gradient(
+        ellipse at 80% 18%,
+        color-mix(in oklch, var(--color-coral) 28%, transparent),
+        transparent 38%
+      ),
+      conic-gradient(
+        from 220deg at 75% 45%,
+        var(--color-bg),
+        var(--color-soft),
+        var(--color-bg)
+      ),
+      linear-gradient(120deg, var(--color-bg), var(--color-soft));
+  }
+  .hero__copy {
+    max-inline-size: 54rem;
+  }
+  .hero__copy > * + * {
+    margin-block-start: var(--space-5);
+  }
+  .hero__art {
+    position: absolute;
+    inset-inline-end: 4%;
+    inset-block-end: 8%;
+    inline-size: clamp(5rem, 16vw, 12rem);
+    aspect-ratio: 1;
+    opacity: 0.55;
+    background: url("../../assets/icons/spark.svg") center / contain no-repeat;
+  }
+  .hero__lede {
+    max-inline-size: 54ch;
+    font-size: var(--text-lg);
+  }
+  /* EN: Compact hero spacing on narrow screens so the next section remains in the first viewport.
+     PT: Compacta o hero em telas estreitas para manter a seção seguinte na primeira viewport. */
+  @media (max-width: 38rem) {
+    .hero {
+      padding-block: var(--space-4);
+    }
+    .hero__copy > * + * {
+      margin-block-start: var(--space-3);
+    }
+    .hero h1 {
+      font-size: clamp(2.35rem, 12vw, 3.2rem);
+    }
+    .hero__lede {
+      font-size: var(--text-md);
+    }
+  }
+  .color-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+    gap: var(--space-3);
+  }
+  .color-swatch {
+    min-block-size: 8rem;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    background: var(--color-demo-fallback);
+    background: var(--color-demo-oklch);
+    color: var(--color-ink);
+  }
+  /* EN: An opaque token surface keeps sample labels readable over every color function.
+     PT: Uma superfície opaca por token mantém rótulos legíveis sobre qualquer função de cor. */
+  .color-swatch > span {
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+  .color-swatch--mix {
+    /* EN: color-mix() blends semantic colors in a perceptual space for a smoother transition.
+       PT: color-mix() combina cores semânticas em espaço perceptual para uma transição mais suave. */
+    background: var(--color-accent);
+    background: color-mix(
+      in oklch,
+      var(--color-accent) 55%,
+      var(--color-coral)
+    );
+  }
+  .color-swatch--relative {
+    background: var(--color-teal);
+    background: var(--color-surface);
+    background: oklch(from var(--color-accent) 86% c h);
+    color: var(--color-ink);
+  }
+  /* EN: OKLCH interpolation keeps perceived lightness more even across the gradient.
+     PT: A interpolação em OKLCH mantém a luminosidade percebida mais uniforme no gradiente. */
+  .color-swatch--gradient {
+    background: linear-gradient(
+      110deg,
+      var(--color-accent),
+      var(--color-coral)
+    );
+    color: var(--color-on-accent, var(--color-white));
+    background: linear-gradient(
+      in oklch 110deg,
+      var(--color-accent),
+      var(--color-coral)
+    );
+  }
+  .color-wheel {
+    min-block-size: 9rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    background: conic-gradient(
+      from var(--demo-angle, 0deg),
+      var(--color-accent),
+      var(--color-coral),
+      var(--color-gold),
+      var(--color-accent)
+    );
+    animation: turn-wheel 8s linear infinite;
+  }
+  @keyframes turn-wheel {
+    to {
+      --demo-angle: 360deg;
+    }
+  }
+  .color-glow {
+    min-block-size: 9rem;
+    background: radial-gradient(
+      ellipse at 35% 25%,
+      var(--color-white),
+      var(--color-soft) 55%,
+      var(--color-accent)
+    );
+  }
+  @supports not (background: oklch(70% 0.1 180)) {
+    .color-swatch {
+      background: var(--color-soft);
+    }
+  }
+}

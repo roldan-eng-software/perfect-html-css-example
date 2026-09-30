@@ -1,0 +1,31 @@
+/* ==========================================================
+  FILE: grid.css | ARQUIVO: grid.css
+  LAYER: @layer layout | CAMADA: @layer layout
+  PURPOSE: provide fluid grid patterns | PROPÓSITO: fornecer padrões de grade fluidos
+  TECHNIQUES: repeat(), minmax(), fit-content() | TÉCNICAS: repeat(), minmax(), fit-content()
+  USED IN: navigation and demo layout | USADO EM: navegação e demonstrações
+   ========================================================== */
+@layer layout {
+  /* EN: repeat() and minmax() produce as many columns as fit without fixed breakpoints.
+    PT: repeat() e minmax() criam quantas colunas couberem, sem breakpoints fixos. */
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: var(--space-4);
+  }
+  /* EN: fit-content() caps this grid track while allowing short labels to stay compact.
+     PT: fit-content() limita esta trilha e mantém rótulos curtos compactos. */
+  .split-grid {
+    display: grid;
+    grid-template-columns: fit-content(68ch) minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+  .measure {
+    max-inline-size: 68ch;
+  }
+  @media (max-width: 42rem) {
+    .split-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+/* ==========================================================
+   FILE: button.css | ARQUIVO: button.css
+   LAYER: @layer components | CAMADA: @layer components
+   PURPOSE: consistent keyboard-friendly actions | PROPÓSITO: ações consistentes e acessíveis
+   TECHNIQUES: nesting, transitions | TÉCNICAS: nesting, transições
+   USED IN: calls to action, forms | USADO EM: chamadas e formulários
+   ========================================================== */
+@layer components {
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 2.75rem;
+    padding-inline: var(--space-5);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    background: var(--color-accent);
+    color: var(--color-on-accent, var(--color-white));
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      background var(--duration-fast) var(--ease-standard),
+      transform var(--duration-fast) var(--ease-standard);
+    /* EN: Native CSS nesting keeps interaction states beside their component rule.
+       PT: O nesting nativo mantém os estados de interação junto à regra do componente. */
+    &:hover {
+      background: var(--color-accent-strong);
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+  .button--quiet {
+    background: transparent;
+    color: var(--color-accent);
+  }
+}

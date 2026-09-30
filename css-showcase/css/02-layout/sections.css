@@ -1,0 +1,40 @@
+/* ==========================================================
+  FILE: sections.css | ARQUIVO: sections.css
+  LAYER: @layer layout | CAMADA: @layer layout
+  PURPOSE: establish spacing, anchors, and section rhythm | PROPÓSITO: estabelecer ritmo e âncoras
+  TECHNIQUES: counter(), counters(), counter-increment | TÉCNICAS: counter(), counters(), counter-increment
+  USED IN: main sections | USADO EM: seções principais
+   ========================================================== */
+@layer layout {
+  /* EN: Counters number sections in markup order, avoiding duplicated hard-coded labels.
+    PT: Contadores numeram seções na ordem da marcação e evitam rótulos repetidos à mão. */
+  main {
+    counter-reset: showcase-section;
+  }
+  .showcase-section {
+    counter-reset: showcase-subsection;
+  }
+  .showcase-section {
+    counter-increment: showcase-section;
+    padding-block: clamp(var(--space-7), 8vw, var(--space-10));
+    border-block-start: 1px solid var(--color-border);
+    scroll-margin-block-start: 6rem;
+  }
+  .showcase-section__heading::before {
+    content: counter(showcase-section, decimal-leading-zero) " / ";
+    color: var(--color-accent);
+    font: 600 var(--text-sm) var(--font-mono);
+  }
+  /* EN: Nested counter strings are available for subsection headings when the content grows.
+      PT: A sequência aninhada fica disponível para subtítulos quando o conteúdo crescer. */
+  .showcase-subheading {
+    counter-increment: showcase-subsection;
+  }
+  .showcase-subheading::before {
+    content: counters(showcase-section, ".") "." counter(showcase-subsection)
+      " ";
+  }
+  .section-intro {
+    margin-block: var(--space-3) var(--space-6);
+  }
+}

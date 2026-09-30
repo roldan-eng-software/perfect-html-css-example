@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A bilingual, JavaScript-free portfolio demonstrating modern CSS techniques."
+    />
+    <title>CSS Showcase | A CSS field guide</title>
+    <link rel="icon" href="assets/icons/spark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <input
+      class="language-choice"
+      id="language-en"
+      name="language"
+      type="radio"
+      value="en-US"
+      checked
+    />
+    <input
+      class="language-choice"
+      id="language-pt"
+      name="language"
+      type="radio"
+      value="pt-BR"
+    />
+    <div class="reading-progress" aria-hidden="true"></div>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header__inner container">
+          <a class="site-brand" href="#top">CSS / FIELD NOTES</a>
+          <fieldset class="language-switch">
+            <legend class="sr-only">
+              <span lang="en">Choose language</span>
+              <span lang="pt-BR">Escolha o idioma</span>
+            </legend>
+            <label class="language-switch__label--en" for="language-en"
+              >EN</label
+            >
+            <label class="language-switch__label--pt" for="language-pt"
+              >PT-BR</label
+            >
+          </fieldset>
+          <nav class="site-nav">
+            <input class="menu-control" id="menu-control" type="checkbox" />
+            <label class="menu-trigger" for="menu-control"
+              ><span lang="en">Menu</span><span lang="pt-BR">Menu</span></label
+            >
+            <ul class="site-nav__list">
+              <li>
+                <a data-nav="grid" href="#grid"
+                  ><span lang="en">Layout</span
+                  ><span lang="pt-BR">Layout</span></a
+                >
+              </li>
+              <li>
+                <a data-nav="motion" href="#motion"
+                  ><span lang="en">Motion</span
+                  ><span lang="pt-BR">Movimento</span></a
+                >
+              </li>
+              <li>
+                <a data-nav="selectors" href="#selectors"
+                  ><span lang="en">Selectors</span
+                  ><span lang="pt-BR">Seletores</span></a
+                >
+              </li>
+              <li>
+                <a data-nav="contact" href="#contact"
+                  ><span lang="en">Contact</span
+                  ><span lang="pt-BR">Contato</span></a
+                >
+              </li>
+              <li>
+                <a data-nav="architecture" href="#architecture"
+                  ><span lang="en">Source map</span
+                  ><span lang="pt-BR">Mapa do código</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main id="top" class="container">
+        <section class="hero" aria-labelledby="hero-title">
+          <span class="hero__art" aria-hidden="true"></span>
+          <div class="hero__copy">
+            <p class="badge">
+              <span lang="en">A living CSS portfolio</span
+              ><span lang="pt-BR">Um portfólio vivo de CSS</span>
+            </p>
+            <h1 id="hero-title">
+              <span lang="en">CSS, made visible.</span
+              ><span lang="pt-BR">CSS, em plena vista.</span>
+            </h1>
+            <p class="hero__lede" lang="en">
+              A field guide to modern layout, motion, color, and interaction,
+              built with the browser's native tools.
+            </p>
+            <p class="hero__lede" lang="pt-BR">
+              Um guia de layout, movimento, cor e interação modernos, construído
+              com os recursos nativos do navegador.
+            </p>
+            <div class="cluster">
+              <a class="button" href="#grid"
+                ><span lang="en">Explore the demos</span
+                ><span lang="pt-BR">Explorar demonstrações</span></a
+              >
+              <a class="button button--quiet" href="#architecture"
+                ><span lang="en">Read the source map</span
+                ><span lang="pt-BR">Ver mapa do código</span></a
+              >
+            </div>
+            <p class="text-muted text-small" lang="en">
+              HTML5 + CSS3 · zero JS
+            </p>
+            <p class="text-muted text-small" lang="pt-BR">
+              HTML5 + CSS3 · sem JS
+            </p>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-color-functions.css</span
+            >
+            <pre><code><span class="tok-selector">.hero</span> { counter-increment: showcase-section; position: relative; isolation: isolate; overflow: hidden; min-block-size: min(max(62svh, 24rem), 42rem); display: grid; align-items: center; padding-block: clamp(var(--space-5), 5vw, var(--space-7)); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="navigation"
+          aria-labelledby="navigation-title"
+        >
+          <h2 class="showcase-section__heading" id="navigation-title">
+            <span lang="en">Sticky navigation, native menu</span
+            ><span lang="pt-BR">Navegação fixa, menu nativo</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            The header stays in view with a translucent surface. On narrow
+            screens, a labeled checkbox reveals the links without a script.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            O cabeçalho permanece visível com uma superfície translúcida. Em
+            telas estreitas, uma caixa rotulada revela os links sem script.
+          </p>
+          <p>
+            <span class="badge">position: sticky</span>
+            <span class="badge">backdrop-filter</span>
+            <span class="badge">checkbox + CSS</span>
+          </p>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/03-components/navbar.css</span>
+            <pre><code><span class="tok-selector">.site-header</span> { position: sticky; inset-block-start: 0; z-index: var(--z-header); border-block-end: 1px solid var(--color-border); background: color-mix(in oklch, var(--color-bg) 90%, transparent); backdrop-filter: blur(12px); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section showcase-section--grid"
+          id="grid"
+          aria-labelledby="grid-title"
+        >
+          <h2 class="showcase-section__heading" id="grid-title">CSS Grid</h2>
+          <p class="section-intro" lang="en">
+            Named areas make the composition readable; auto-fit and minmax let
+            columns adapt. Subgrid is progressively enhanced where available.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Áreas nomeadas deixam a composição legível; auto-fit e minmax
+            adaptam as colunas. Subgrid é aprimorado progressivamente quando
+            disponível.
+          </p>
+          <div class="demo-grid" role="group" aria-labelledby="grid-title">
+            <article class="demo-grid__tile demo-grid__tile--wide">
+              <span lang="en">Named area: wide</span
+              ><span lang="pt-BR">Área nomeada: ampla</span>
+            </article>
+            <article class="demo-grid__tile demo-grid__tile--tall">
+              <span lang="en">Aspect ratio</span
+              ><span lang="pt-BR">Proporção</span>
+            </article>
+            <article class="demo-grid__tile demo-grid__tile--small">
+              <span lang="en">Auto-fit track</span
+              ><span lang="pt-BR">Trilha auto-fit</span>
+            </article>
+            <article class="demo-grid__tile demo-grid__tile--nested">
+              <span lang="en">Subgrid row</span
+              ><span lang="pt-BR">Linha subgrid</span>
+            </article>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/05-demos/demo-grid.css</span>
+            <pre><code><span class="tok-selector">.demo-grid</span> {
+  <span class="tok-prop">display</span>: <span class="tok-value">grid</span>;
+  <span class="tok-prop">grid-template-columns</span>: <span class="tok-value">minmax(0, 1fr)</span>;
+  <span class="tok-prop">grid-template-areas</span>: <span class="tok-value">"wide" "tall" "small" "nested"</span>;
+  <span class="tok-prop">grid-auto-flow</span>: <span class="tok-value">dense</span>;
+  <span class="tok-prop">gap</span>: <span class="tok-value">var(--space-3)</span>;
+}
+<span class="tok-comment">/* EN: The breakpoint adds columns only when both tracks fit without overflow.
+  PT: O breakpoint cria colunas apenas quando ambas as trilhas cabem sem transbordar. */</span>
+<span class="tok-selector">@media (min-width: 38rem)</span> {
+  .demo-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); grid-template-areas: "wide wide" "tall small" "nested nested"; }
+}</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="flexbox"
+          aria-labelledby="flex-title"
+        >
+          <h2 class="showcase-section__heading" id="flex-title">Flexbox</h2>
+          <p class="section-intro" lang="en">
+            Items wrap naturally and share available space. Their source order
+            remains meaningful when the visual order changes.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Os itens quebram naturalmente e dividem o espaço disponível. A ordem
+            no código continua significativa quando a ordem visual muda.
+          </p>
+          <div class="flex-demo">
+            <article class="flex-demo__item">
+              <strong lang="en">Flexible basis</strong
+              ><strong lang="pt-BR">Base flexível</strong>
+              <p lang="en">A useful minimum width.</p>
+              <p lang="pt-BR">Uma largura mínima útil.</p>
+            </article>
+            <article class="flex-demo__item">
+              <strong lang="en">Wrapped layout</strong
+              ><strong lang="pt-BR">Layout com quebra</strong>
+              <p lang="en">No fixed card widths.</p>
+              <p lang="pt-BR">Sem largura fixa nos cartões.</p>
+            </article>
+            <article class="flex-demo__item">
+              <strong lang="en">Responsive order</strong
+              ><strong lang="pt-BR">Ordem responsiva</strong>
+              <p lang="en">Returns to source order on mobile.</p>
+              <p lang="pt-BR">Retorna à ordem original no celular.</p>
+            </article>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/05-demos/demo-flexbox.css</span>
+            <pre><code><span class="tok-selector">.flex-demo</span> { display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--space-3); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="themes"
+          aria-labelledby="themes-title"
+        >
+          <h2 class="showcase-section__heading" id="themes-title">
+            <span lang="en">Tokens and color themes</span
+            ><span lang="pt-BR">Tokens e temas de cor</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            Choose a preview. The radio state updates page-level custom
+            properties through :has(), while semantic tokens keep component
+            rules unchanged.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Escolha uma prévia. O estado do rádio atualiza propriedades da
+            página com :has(), enquanto tokens semânticos mantêm as regras dos
+            componentes iguais.
+          </p>
+          <div class="theme-demo split-grid">
+            <input
+              class="theme-control"
+              id="theme-light"
+              name="theme-preview"
+              type="radio"
+              value="light"
+              checked
+            />
+            <label for="theme-light"
+              ><span lang="en">Light</span
+              ><span lang="pt-BR">Claro</span></label
+            >
+            <input
+              class="theme-control"
+              id="theme-dark"
+              name="theme-preview"
+              type="radio"
+              value="dark"
+            />
+            <label for="theme-dark"
+              ><span lang="en">Dark</span
+              ><span lang="pt-BR">Escuro</span></label
+            >
+            <article class="theme-sample">
+              <strong lang="en">Semantic surface</strong
+              ><strong lang="pt-BR">Superfície semântica</strong>
+              <p lang="en">
+                The page and this sample share the same color tokens.
+              </p>
+              <p lang="pt-BR">
+                A página e esta amostra compartilham os mesmos tokens de cor.
+              </p>
+            </article>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/05-demos/demo-theming.css</span>
+            <pre><code><span class="tok-selector">body:has(.theme-control[value="dark"]:checked)</span> { color-scheme: dark; --color-bg: #12262d; --color-surface: #1c353d; --color-text: #edf6f4; --color-accent: #73d9d1; }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="type"
+          aria-labelledby="type-title"
+        >
+          <h2 class="showcase-section__heading" id="type-title">
+            <span lang="en">Fluid type that holds its measure</span
+            ><span lang="pt-BR">Tipografia fluida com leitura confortável</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            clamp() scales the heading between useful limits; ch keeps body copy
+            from stretching too far.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            clamp() escala o título entre limites úteis; ch impede que o texto
+            corrido fique largo demais.
+          </p>
+          <article class="card">
+            <h3 class="showcase-subheading">
+              <span lang="en">A heading tuned to its space</span
+              ><span lang="pt-BR">Um título ajustado ao espaço</span>
+            </h3>
+            <p class="measure type-sample__excerpt" lang="en">
+              Readable type is a layout decision. A measured line length,
+              balanced wrapping, and a fluid scale help the same words work
+              across screens.
+            </p>
+            <p class="measure type-sample__excerpt" lang="pt-BR">
+              A tipografia legível também é uma decisão de layout. Linhas
+              medidas, quebra equilibrada e escala fluida ajudam o mesmo texto a
+              funcionar em várias telas.
+            </p>
+          </article>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/01-base/typography.css</span>
+            <pre><code><span class="tok-selector">h1</span> { font-size: var(--text-display); text-wrap: balance; }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section showcase-section--motion"
+          id="motion"
+          aria-labelledby="motion-title"
+        >
+          <h2 class="showcase-section__heading" id="motion-title">
+            <span lang="en">Motion with a small footprint</span
+            ><span lang="pt-BR">Movimento com baixo custo</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            These samples animate transform and opacity rather than layout.
+            Reduced-motion preferences disable nonessential movement.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Estas amostras animam transform e opacity em vez do layout. A
+            preferência por movimento reduzido desativa animações não
+            essenciais.
+          </p>
+          <div class="motion-row" role="group" aria-labelledby="motion-title">
+            <span class="motion-dot"></span
+            ><span class="motion-dot motion-dot--second"></span
+            ><span class="motion-dot motion-dot--third motion-dot--hint"></span>
+          </div>
+          <div class="flow-space motion-bar" aria-hidden="true"></div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-animations.css</span
+            >
+            <pre><code><span class="tok-selector">.motion-dot</span> { inline-size: 2.5rem; aspect-ratio: 1; border-radius: 50%; background: var(--color-coral); animation: drift 1.8s var(--ease-standard) infinite alternate; animation-delay: calc(var(--item-index, 0) * 120ms); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="scroll"
+          aria-labelledby="scroll-title"
+        >
+          <h2 class="showcase-section__heading" id="scroll-title">
+            <span lang="en">Scroll-driven enhancement</span
+            ><span lang="pt-BR">Animação vinculada à rolagem</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            Where supported, the thin reading indicator follows the document and
+            this sample reveals as it enters view. Without support, the page
+            remains fully readable.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Quando suportada, a barra acompanha a página e esta amostra aparece
+            ao entrar na área visível. Sem suporte, todo o conteúdo continua
+            legível.
+          </p>
+          <article class="reveal-sample">
+            <strong lang="en">Progressive enhancement</strong
+            ><strong lang="pt-BR">Aprimoramento progressivo</strong>
+            <p lang="en">
+              Scroll-linked effects are optional, not required to understand the
+              content.
+            </p>
+            <p lang="pt-BR">
+              Efeitos ligados à rolagem são opcionais, não necessários para
+              entender o conteúdo.
+            </p>
+          </article>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-scroll-driven.css</span
+            >
+            <pre><code><span class="tok-selector">@supports (animation-timeline: scroll())</span> { .reading-progress { animation: reading-fill linear both; animation-timeline: scroll(root block); } }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="snap"
+          aria-labelledby="snap-title"
+        >
+          <h2 class="showcase-section__heading" id="snap-title">
+            <span lang="en">A native scroll-snap rail</span
+            ><span lang="pt-BR">Trilho nativo com scroll-snap</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            Scroll horizontally or use the keyboard. Snap alignment provides a
+            clear stopping point without carousel scripting.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Role na horizontal ou use o teclado. O alinhamento de snap cria
+            pontos de parada sem script de carrossel.
+          </p>
+          <div
+            class="snap-track"
+            role="group"
+            aria-labelledby="snap-title"
+            tabindex="0"
+          >
+            <article class="snap-card">
+              <strong lang="en">One / Layout</strong
+              ><strong lang="pt-BR">Um / Layout</strong>
+            </article>
+            <article class="snap-card">
+              <strong lang="en">Two / Color</strong
+              ><strong lang="pt-BR">Dois / Cor</strong>
+            </article>
+            <article class="snap-card">
+              <strong lang="en">Three / Motion</strong
+              ><strong lang="pt-BR">Três / Movimento</strong>
+            </article>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-scroll-driven.css</span
+            >
+            <pre><code><span class="tok-selector">.snap-track</span> { display: flex; gap: var(--space-4); overflow-x: auto; padding-block: var(--space-3); scroll-snap-type: inline mandatory; scroll-padding-inline: var(--space-4); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="containers"
+          aria-labelledby="containers-title"
+        >
+          <h2 class="showcase-section__heading" id="containers-title">
+            <span lang="en">Container queries</span
+            ><span lang="pt-BR">Consultas de container</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            Resize the dashed frame. Unlike a media query, this card responds to
+            its own container, so it can adapt wherever it is placed.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Redimensione a moldura tracejada. Diferente de uma media query, o
+            cartão responde ao próprio container e se adapta onde estiver.
+          </p>
+          <div
+            class="container-frame"
+            role="group"
+            aria-labelledby="containers-title"
+          >
+            <article class="query-card">
+              <span class="badge">@container</span>
+              <p lang="en">
+                My layout follows the width of the frame around me.
+              </p>
+              <p lang="pt-BR">
+                Meu layout acompanha a largura da moldura ao meu redor.
+              </p>
+            </article>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-container-queries.css</span
+            >
+            <pre><code><span class="tok-selector">@container (min-width: 34rem)</span> { .query-card { grid-template-columns: 8rem 1fr; align-items: center; } }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section showcase-section--selectors"
+          id="selectors"
+          aria-labelledby="selectors-title"
+        >
+          <h2 class="showcase-section__heading" id="selectors-title">
+            <span lang="en">Selectors that express intent</span
+            ><span lang="pt-BR">Seletores que expressam intenção</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            :is(), :where(), :not(), :has(), :focus-within, :user-invalid,
+            ::marker, and :nth-child() reduce markup-specific styling.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            :is(), :where(), :not(), :has(), :focus-within, :user-invalid,
+            ::marker e :nth-child() reduzem estilos acoplados à marcação.
+          </p>
+          <ul class="selector-list">
+            <li lang="en">Grouped selectors stay easy to scan.</li>
+            <li lang="pt-BR">Seletores agrupados ficam fáceis de ler.</li>
+            <li lang="en" class="is-muted">A muted item opts out.</li>
+            <li lang="pt-BR" class="is-muted">
+              Um item discreto fica de fora.
+            </li>
+            <li lang="en">Keyboard focus is never hidden.</li>
+            <li lang="pt-BR">O foco do teclado nunca fica oculto.</li>
+          </ul>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-modern-selectors.css</span
+            >
+            <pre><code><span class="tok-selector">.selector-list :is(li, p):not(.is-muted)</span> { padding-inline-start: var(--space-2); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section showcase-section--contact"
+          id="contact"
+          aria-labelledby="contact-title"
+        >
+          <h2 class="showcase-section__heading" id="contact-title">
+            <span lang="en">A form with native validation states</span
+            ><span lang="pt-BR">Formulário com validação nativa</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            This form is a CSS demo only; it does not send or store data.
+            Required fields expose browser validation, and CSS styles the
+            states.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Este formulário é apenas uma demonstração de CSS; não envia nem
+            armazena dados. Campos obrigatórios usam validação do navegador e o
+            CSS estiliza os estados.
+          </p>
+          <form class="contact-form" action="#contact" method="get">
+            <div class="field field--floating">
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                placeholder=" "
+                autocomplete="name"
+                required
+              /><label for="contact-name"
+                ><span lang="en">Your name</span
+                ><span lang="pt-BR">Seu nome</span></label
+              >
+            </div>
+            <div class="field">
+              <label for="contact-email"
+                ><span lang="en">Email address</span
+                ><span lang="pt-BR">E-mail</span></label
+              ><input
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="contact-message"
+                ><span lang="en">Message</span
+                ><span lang="pt-BR">Mensagem</span></label
+              ><textarea
+                id="contact-message"
+                name="message"
+                rows="3"
+                placeholder=" "
+                required
+              ></textarea>
+            </div>
+            <label class="cluster"
+              ><input type="checkbox" required /><span lang="en"
+                >I understand this demo does not submit data.</span
+              ><span lang="pt-BR"
+                >Entendo que esta demonstração não envia dados.</span
+              ></label
+            >
+            <button class="button" type="submit">
+              <span lang="en">Check the form</span
+              ><span lang="pt-BR">Validar formulário</span>
+            </button>
+            <p class="form-status text-small" lang="en">
+              All fields are local examples; no endpoint is configured.
+            </p>
+            <p class="form-status text-small" lang="pt-BR">
+              Todos os campos são exemplos locais; nenhum endpoint está
+              configurado.
+            </p>
+          </form>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-modern-selectors.css</span
+            >
+            <pre><code><span class="tok-selector">.field input:user-invalid</span>, .field textarea:user-invalid { border-color: var(--color-danger); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="disclosure"
+          aria-labelledby="disclosure-title"
+        >
+          <h2 class="showcase-section__heading" id="disclosure-title">
+            <span lang="en">Disclosure and anchor tabs</span
+            ><span lang="pt-BR">Acordeão e abas por âncora</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            The browser owns the open state. The details name attribute requests
+            exclusive disclosure where supported; hash targets provide simple
+            tabs.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            O navegador controla o estado aberto. O atributo name em details
+            pede abertura exclusiva quando suportado; âncoras criam abas
+            simples.
+          </p>
+          <div class="accordion">
+            <details name="css-faq">
+              <summary>
+                <span lang="en">Why no JavaScript?</span
+                ><span lang="pt-BR">Por que sem JavaScript?</span>
+              </summary>
+              <p lang="en">
+                Native HTML already covers disclosure, anchors, and popovers.
+              </p>
+              <p lang="pt-BR">
+                O HTML nativo já atende a conteúdo expansível, âncoras e
+                popovers.
+              </p>
+            </details>
+            <details name="css-faq">
+              <summary>
+                <span lang="en">What about older browsers?</span
+                ><span lang="pt-BR">E os navegadores antigos?</span>
+              </summary>
+              <p lang="en">
+                Core content stays available; advanced styling has fallbacks.
+              </p>
+              <p lang="pt-BR">
+                O conteúdo principal continua disponível; estilos avançados têm
+                alternativas.
+              </p>
+            </details>
+          </div>
+          <div class="tabs flow-space">
+            <nav class="tabs__links">
+              <a href="#tab-layout"
+                ><span lang="en">Layout</span
+                ><span lang="pt-BR">Layout</span></a
+              ><a href="#tab-cascade"
+                ><span lang="en">Cascade</span
+                ><span lang="pt-BR">Cascata</span></a
+              >
+            </nav>
+            <article class="tabs__panel" id="tab-layout">
+              <strong lang="en">Layout layer</strong
+              ><strong lang="pt-BR">Camada de layout</strong>
+              <p lang="en">Containers and section rhythm.</p>
+              <p lang="pt-BR">Containers e ritmo das seções.</p>
+            </article>
+            <article class="tabs__panel" id="tab-cascade">
+              <strong lang="en">Cascade layer</strong
+              ><strong lang="pt-BR">Camada da cascata</strong>
+              <p lang="en">A clear order keeps overrides predictable.</p>
+              <p lang="pt-BR">
+                Uma ordem clara torna sobrescritas previsíveis.
+              </p>
+            </article>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/03-components/accordion.css + tabs.css</span
+            >
+            <pre><code><span class="tok-selector">.accordion details</span> { padding-block: var(--space-4); border-block-end: 1px solid var(--color-border); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="popover"
+          aria-labelledby="popover-title"
+        >
+          <h2 class="showcase-section__heading" id="popover-title">
+            <span lang="en">Popover with native dismissal</span
+            ><span lang="pt-BR">Popover com fechamento nativo</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            The Popover API provides top-layer placement and light dismissal.
+            The browser handles open and close without a custom event handler.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            A Popover API oferece posicionamento na camada superior e fechamento
+            contextual. O navegador abre e fecha sem manipulador de eventos
+            próprio.
+          </p>
+          <button class="button" type="button" popovertarget="project-popover">
+            <span lang="en">Open the CSS note</span
+            ><span lang="pt-BR">Abrir nota de CSS</span>
+          </button>
+          <dialog class="popover-panel" id="project-popover" popover>
+            <h3 lang="en">Native, not simulated</h3>
+            <h3 lang="pt-BR">Nativo, não simulado</h3>
+            <p lang="en">
+              This panel uses the browser popover layer and can be dismissed
+              with Escape.
+            </p>
+            <p lang="pt-BR">
+              Este painel usa a camada popover do navegador e pode ser fechado
+              com Escape.
+            </p>
+            <button
+              class="button button--quiet"
+              type="button"
+              popovertarget="project-popover"
+              popovertargetaction="hide"
+            >
+              <span lang="en">Close</span><span lang="pt-BR">Fechar</span>
+            </button>
+          </dialog>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/03-components/modal.css</span>
+            <pre><code><span class="tok-selector">.popover-panel::backdrop</span> { background: var(--color-backdrop); backdrop-filter: blur(3px); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="shapes"
+          aria-labelledby="shapes-title"
+        >
+          <h2 class="showcase-section__heading" id="shapes-title">
+            <span lang="en">Shapes, masks, and depth</span
+            ><span lang="pt-BR">Formas, máscaras e profundidade</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            CSS shapes alter the silhouette or text flow while preserving
+            meaningful HTML. The star mask is a small local SVG.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Formas CSS alteram o contorno ou o fluxo do texto sem perder HTML
+            semântico. A máscara de estrela usa um SVG local pequeno.
+          </p>
+          <div class="shape-stage">
+            <div class="shape-cut" aria-hidden="true"></div>
+            <div class="shape-mask" aria-hidden="true"></div>
+            <p class="shape-copy" lang="en">
+              Text can flow around a CSS circle instead of forcing every image
+              into a rectangular box.
+            </p>
+            <p class="shape-copy" lang="pt-BR">
+              O texto pode contornar um círculo CSS, sem forçar cada imagem a
+              caber em uma caixa retangular.
+            </p>
+          </div>
+          <div class="shape-depth flow-space" aria-hidden="true"></div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/05-demos/demo-clip-mask.css</span>
+            <pre><code><span class="tok-selector">.shape-cut</span> { min-block-size: 12rem; background: linear-gradient(135deg, var(--color-accent), var(--color-coral)); clip-path: polygon(0 0, 100% 0, 82% 100%, 12% 82%); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="colors"
+          aria-labelledby="colors-title"
+        >
+          <h2 class="showcase-section__heading" id="colors-title">
+            <span lang="en">Modern color functions</span
+            ><span lang="pt-BR">Funções modernas de cor</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            OKLCH, relative colors, and color-mix make relationships explicit. A
+            solid fallback protects browsers without OKLCH.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            OKLCH, cores relativas e color-mix tornam as relações explícitas.
+            Uma cor sólida atende navegadores sem OKLCH.
+          </p>
+          <div class="color-swatches">
+            <div class="color-swatch">
+              <span lang="en">OKLCH</span><span lang="pt-BR">OKLCH</span>
+            </div>
+            <div class="color-swatch color-swatch--mix">
+              <span lang="en">Color mix</span
+              ><span lang="pt-BR">Mistura de cores</span>
+            </div>
+            <div class="color-swatch color-swatch--relative">
+              <span lang="en">Relative color</span
+              ><span lang="pt-BR">Cor relativa</span>
+            </div>
+            <div class="color-swatch color-swatch--gradient">
+              <span lang="en">Gradient in OKLCH</span
+              ><span lang="pt-BR">Gradiente em OKLCH</span>
+            </div>
+            <div class="color-wheel" aria-hidden="true"></div>
+            <div class="color-glow" aria-hidden="true"></div>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path"
+              >css/05-demos/demo-color-functions.css</span
+            >
+            <pre><code><span class="tok-selector">.color-swatch--mix</span> { background: color-mix(in oklch, var(--color-accent) 55%, var(--color-coral)); }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section"
+          id="responsive"
+          aria-labelledby="responsive-title"
+        >
+          <h2 class="showcase-section__heading" id="responsive-title">
+            <span lang="en">Responsive by available space</span
+            ><span lang="pt-BR">Responsivo ao espaço disponível</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            The layout uses content-driven sizing, small-screen breakpoints,
+            safe-area insets, and viewport units with fallbacks. Print styles
+            remove interface-only controls.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            O layout usa dimensões guiadas pelo conteúdo, breakpoints pequenos,
+            safe-area e unidades de viewport com alternativas. A impressão
+            remove controles da interface.
+          </p>
+          <article class="viewport-sample">
+            <strong lang="en">A viewport-sized sample</strong
+            ><strong lang="pt-BR">Amostra dimensionada pela viewport</strong>
+            <p lang="en">
+              Try narrow and wide screens; the content remains within the
+              viewport.
+            </p>
+            <p lang="pt-BR">
+              Teste telas estreitas e largas; o conteúdo permanece dentro da
+              viewport.
+            </p>
+          </article>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/05-demos/demo-clip-mask.css</span>
+            <pre><code><span class="tok-selector">@media (hover: hover)</span> { .shape-depth:hover { filter: saturate(1.2); } }</code></pre>
+          </details>
+        </section>
+        <section
+          class="showcase-section showcase-section--architecture"
+          id="architecture"
+          aria-labelledby="architecture-title"
+        >
+          <h2 class="showcase-section__heading" id="architecture-title">
+            <span lang="en">How this page is built</span
+            ><span lang="pt-BR">Como esta página foi feita</span>
+          </h2>
+          <p class="section-intro" lang="en">
+            Each layer has a job, and every demo points to the stylesheet that
+            owns its behavior.
+          </p>
+          <p class="section-intro" lang="pt-BR">
+            Cada camada tem uma função, e toda demonstração aponta para a folha
+            de estilos que controla seu comportamento.
+          </p>
+          <div class="card">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span lang="en">Demonstration</span
+                    ><span lang="pt-BR">Demonstração</span>
+                  </th>
+                  <th scope="col">
+                    <span lang="en">Source file</span
+                    ><span lang="pt-BR">Arquivo de origem</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Grid</th>
+                  <td>
+                    <a href="css/05-demos/demo-grid.css">demo-grid.css</a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Flexbox</th>
+                  <td>
+                    <a href="css/05-demos/demo-flexbox.css">demo-flexbox.css</a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <span lang="en">Motion and scroll</span
+                    ><span lang="pt-BR">Movimento e rolagem</span>
+                  </th>
+                  <td>
+                    <a href="css/05-demos/demo-scroll-driven.css"
+                      >demo-scroll-driven.css</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <span lang="en">Themes and color</span
+                    ><span lang="pt-BR">Temas e cores</span>
+                  </th>
+                  <td>
+                    <a href="css/05-demos/demo-color-functions.css"
+                      >demo-color-functions.css</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <span lang="en">Forms and selectors</span
+                    ><span lang="pt-BR">Formulários e seletores</span>
+                  </th>
+                  <td>
+                    <a href="css/05-demos/demo-modern-selectors.css"
+                      >demo-modern-selectors.css</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/02-layout/sections.css</span>
+            <pre><code><span class="tok-selector">.showcase-section</span> { counter-increment: showcase-section; padding-block: clamp(var(--space-7), 8vw, var(--space-10)); border-block-start: 1px solid var(--color-border); scroll-margin-block-start: 6rem; }</code></pre>
+          </details>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer__inner container">
+          <p>
+            <strong>CSS Showcase</strong><br /><span lang="en"
+              >A practical portfolio by Roldan Eng Software.</span
+            ><span lang="pt-BR"
+              >Um portfólio prático por Roldan Eng Software.</span
+            >
+          </p>
+          <nav>
+            <!-- EN: Replace these portfolio placeholders before publishing. | PT: Substitua estes links provisórios antes de publicar. -->
+            <a href="https://github.com/your-user">GitHub</a>
+            <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+            <a href="LICENSE"
+              ><span lang="en">MIT License</span
+              ><span lang="pt-BR">Licença MIT</span></a
+            >
+          </nav>
+          <details class="code-peek">
+            <summary>
+              <span lang="en">View the CSS for this section</span
+              ><span lang="pt-BR">Ver o CSS desta seção</span>
+            </summary>
+            <span class="code-peek__path">css/03-components/footer.css</span>
+            <pre><code><span class="tok-selector">.site-footer</span> { padding-block: var(--space-7); border-block-start: 1px solid var(--color-border); }</code></pre>
+          </details>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

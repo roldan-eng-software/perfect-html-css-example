@@ -1,0 +1,20 @@
+# CSS Techniques
+
+Line references are approximate and may shift as the examples evolve. Browser support refers to current evergreen versions; check the target browser matrix before production use.
+
+| Technique                        | Where it is (approx.)                           | Why it is used                                                           | Browser support                                                               |
+| -------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| Cascade layers and imports       | `css/main.css:9`                                | Makes precedence explicit and keeps overrides simple.                    | Current browsers; older browsers may drop layered rules.                      |
+| Tokens and themes                | `css/00-settings/tokens.css:10`, `themes.css:9` | Shares semantic values and responds to system or explicit themes.        | Custom properties are broad; `light-dark()` is newer and has token fallbacks. |
+| `:where()` reset                 | `css/01-base/reset.css:13`                      | Applies baseline rules with zero specificity.                            | Current browsers.                                                             |
+| Fluid type and local font face   | `css/01-base/typography.css:10`                 | Avoids network font requests and keeps headings proportional.            | `clamp()` is broad; `text-wrap` support varies.                               |
+| Grid areas, auto-fit, subgrid    | `css/05-demos/demo-grid.css:9`                  | Shows named composition and content-driven tracks.                       | Grid is broad; subgrid has a feature guard.                                   |
+| Flex wrapping and order          | `css/05-demos/demo-flexbox.css:9`               | Adapts groups while demonstrating responsive visual order.               | Broad support.                                                                |
+| Scroll snap                      | `css/05-demos/demo-scroll-driven.css:12`        | Makes a keyboard-scrollable horizontal rail without a carousel script.   | Broad support in current browsers.                                            |
+| Scroll-driven animation          | `css/05-demos/demo-scroll-driven.css:15`        | Links reading progress and reveals to scroll position.                   | Recent; guarded by `@supports`, with static fallback content.                 |
+| Container queries                | `css/05-demos/demo-container-queries.css:9`     | Makes a component respond to its own available width.                    | Recent; the base card remains a single-column layout.                         |
+| Modern selectors and form states | `css/05-demos/demo-modern-selectors.css:9`      | Styles relationships and native validation without script.               | `:has()` and `:user-invalid` support varies; base form stays usable.          |
+| Popover transitions              | `css/03-components/modal.css:9`                 | Uses the browser top layer and progressively enhanced transitions.       | Popover API and discrete transitions are recent; native controls remain.      |
+| Color functions                  | `css/05-demos/demo-color-functions.css:7`       | Demonstrates OKLCH, relative colors, mixing, and gradient interpolation. | Recent color functions have solid-color or ordinary-gradient fallbacks.       |
+| Masks and responsive media       | `css/05-demos/demo-clip-mask.css:9`             | Shapes local artwork and adapts viewport/print/hover presentation.       | Mask support varies; prefixed and unmasked fallbacks are included.            |
+| Accessibility motion/focus       | `css/01-base/accessibility.css:9`               | Keeps keyboard location visible and honors reduced-motion preference.    | Broad support in current browsers.                                            |

@@ -1,0 +1,151 @@
+/* ==========================================================
+   FILE: navbar.css | ARQUIVO: navbar.css
+   LAYER: @layer components | CAMADA: @layer components
+   PURPOSE: sticky navigation and no-script menu | PROPÓSITO: navegação fixa e menu sem script
+   TECHNIQUES: sticky, backdrop-filter, details | TÉCNICAS: sticky, backdrop-filter, details
+   USED IN: site header | USADO EM: cabeçalho
+   ========================================================== */
+@layer components {
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: var(--z-header);
+    border-block-end: 1px solid var(--color-border);
+    background: var(--color-bg);
+    background: color-mix(in oklch, var(--color-bg) 90%, transparent);
+    backdrop-filter: blur(12px);
+  }
+  .site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    min-block-size: 4.5rem;
+    padding-block: var(--space-2);
+  }
+  .site-brand {
+    color: var(--color-accent);
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .language-switch {
+    display: flex;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .language-switch label {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .language-switch input:checked + label {
+    background: var(--color-accent);
+    color: var(--color-on-accent, var(--color-white));
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .site-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-nav a {
+    color: var(--color-text);
+    font-size: var(--text-sm);
+  }
+  .site-nav a:hover,
+  .site-nav a:focus-visible {
+    color: var(--color-accent);
+  }
+  .language-choice {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    clip-path: inset(50%);
+  }
+  .language-choice[value="pt-BR"]:checked ~ .site-shell [lang="en"] {
+    display: none;
+  }
+  .language-choice[value="en-US"]:checked ~ .site-shell [lang="pt-BR"] {
+    display: none;
+  }
+  .language-choice[value="en-US"]:checked
+    ~ .site-shell
+    .language-switch__label--en,
+  .language-choice[value="pt-BR"]:checked
+    ~ .site-shell
+    .language-switch__label--pt {
+    background: var(--color-accent);
+    color: var(--color-on-accent, var(--color-white));
+  }
+  /* EN: :target and :has() mark the current section without scripting or ID selectors.
+      PT: :target e :has() destacam a seção atual sem script ou seletores de ID. */
+  body:has(.showcase-section--grid:target) .site-nav a[data-nav="grid"],
+  body:has(.showcase-section--motion:target) .site-nav a[data-nav="motion"],
+  body:has(.showcase-section--selectors:target)
+    .site-nav
+    a[data-nav="selectors"],
+  body:has(.showcase-section--contact:target) .site-nav a[data-nav="contact"],
+  body:has(.showcase-section--architecture:target)
+    .site-nav
+    a[data-nav="architecture"] {
+    color: var(--color-accent);
+    font-weight: 700;
+    text-decoration-thickness: 0.15em;
+  }
+  .language-choice:focus-visible ~ .site-shell .language-switch label {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 3px;
+  }
+  .menu-control,
+  .menu-trigger {
+    display: none;
+  }
+  @media (max-width: 56rem) {
+    .menu-control {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      clip-path: inset(50%);
+    }
+    .menu-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2);
+      border: 1px solid var(--color-border);
+      cursor: pointer;
+    }
+    .menu-trigger::before {
+      content: "☰";
+      font-size: 1.2rem;
+    }
+    .menu-control:focus-visible + .menu-trigger {
+      outline: 3px solid var(--color-coral);
+      outline-offset: 3px;
+    }
+    .site-nav__list {
+      display: none;
+      position: absolute;
+      inset-inline: var(--space-4);
+      inset-block-start: calc(100% - var(--space-2));
+      padding: var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-paper);
+    }
+    .menu-control:checked ~ .site-nav__list {
+      display: grid;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+/* ==========================================================
+   FILE: code-peek.css | ARQUIVO: code-peek.css
+   LAYER: @layer components | CAMADA: @layer components
+   PURPOSE: reveal the exact source excerpt | PROPÓSITO: revelar trecho fiel do código
+   TECHNIQUES: details, syntax token colors | TÉCNICAS: details, cores de sintaxe
+   USED IN: every demo section | USADO EM: cada seção demonstrativa
+   ========================================================== */
+@layer components {
+  .code-peek {
+    margin-block-start: var(--space-5);
+    border-block: 1px solid var(--color-border);
+  }
+  .code-peek summary {
+    padding-block: var(--space-3);
+    color: var(--color-accent);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .code-peek__path {
+    display: block;
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+  }
+  .code-peek pre {
+    max-inline-size: 100%;
+    margin: 0;
+    padding: var(--space-4);
+    overflow-x: auto;
+    tab-size: 2;
+    background: var(--color-code);
+    font-size: var(--text-xs);
+  }
+  .tok-selector {
+    color: var(--color-accent-strong);
+  }
+  .tok-prop {
+    color: var(--color-coral);
+  }
+  .tok-value {
+    color: var(--color-text);
+  }
+  .tok-comment {
+    color: var(--color-muted);
+  }
+}

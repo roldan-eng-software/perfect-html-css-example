@@ -1,0 +1,45 @@
+/* ==========================================================
+   FILE: reset.css | ARQUIVO: reset.css
+   LAYER: @layer base | CAMADA: @layer base
+   PURPOSE: normalize defaults without erasing semantics | PROPÓSITO: normalizar sem apagar semântica
+   TECHNIQUES: :where(), box-sizing, logical properties | TÉCNICAS: :where(), box-sizing, propriedades lógicas
+   USED IN: whole document | USADO EM: documento inteiro
+   ========================================================== */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  /* EN: :where() keeps reset selectors at zero specificity for easy overrides.
+     PT: :where() mantém especificidade zero no reset e facilita sobrescritas. */
+  /* EN: :where() leaves reset rules at zero specificity; reduced-motion overrides smooth scrolling.
+     PT: :where() mantém especificidade zero; reduced-motion desativa rolagem suave. */
+  :where(html) {
+    scroll-behavior: smooth;
+  }
+  :where(body, h1, h2, h3, p, figure, blockquote, dl, dd) {
+    margin: 0;
+  }
+  :where(ul, ol) {
+    margin-block: 0;
+    padding-inline-start: 1.25em;
+  }
+  :where(img, svg, video) {
+    display: block;
+    max-inline-size: 100%;
+  }
+  :where(button, input, select, textarea) {
+    font: inherit;
+  }
+  :where(button) {
+    color: inherit;
+  }
+  :where(a) {
+    color: inherit;
+    text-underline-offset: 0.2em;
+  }
+  :where(table) {
+    border-collapse: collapse;
+  }
+}

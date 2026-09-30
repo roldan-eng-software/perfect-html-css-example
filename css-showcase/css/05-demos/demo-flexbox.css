@@ -1,0 +1,33 @@
+/* ==========================================================
+   FILE: demo-flexbox.css | ARQUIVO: demo-flexbox.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: show flexible wrapping and responsive order | PROPÓSITO: demonstrar quebra e ordem flexível
+   TECHNIQUES: flex-wrap, flex-basis, order | TÉCNICAS: flex-wrap, flex-basis, order
+   USED IN: Flexbox section | USADO EM: seção Flexbox
+   ========================================================== */
+@layer demos {
+  .flex-demo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+  .flex-demo__item {
+    flex: 1 1 10rem;
+    padding: var(--space-4);
+    border-inline-start: 3px solid var(--color-coral);
+    background: var(--color-surface);
+  }
+  .flex-demo__item:first-child {
+    order: 2;
+  }
+  .flex-demo__item:last-child {
+    order: 1;
+  }
+  @media (max-width: 38rem) {
+    .flex-demo__item:first-child,
+    .flex-demo__item:last-child {
+      order: 0;
+    }
+  }
+}

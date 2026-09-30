@@ -1,0 +1,56 @@
+/* ==========================================================
+   FILE: themes.css | ARQUIVO: themes.css
+   LAYER: @layer settings | CAMADA: @layer settings
+   PURPOSE: honor system and explicit color themes | PROPÓSITO: respeitar temas do sistema ou explícitos
+   TECHNIQUES: prefers-color-scheme, data-theme, color-scheme | TÉCNICAS: prefers-color-scheme, data-theme, color-scheme
+   USED IN: whole document | USADO EM: documento inteiro
+   ========================================================== */
+@layer settings {
+  :root {
+    color-scheme: light dark;
+  }
+  /* EN: This media query follows the operating-system choice until a page control overrides it.
+     PT: Esta media query segue a preferência do sistema até um controle da página sobrescrevê-la. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --color-bg: #12262d;
+      --color-surface: #1c353d;
+      --color-text: #edf6f4;
+      --color-accent: #73d9d1;
+      --color-accent-strong: #a8eee7;
+      --color-danger: #ff9e91;
+      --color-border: #496168;
+      --color-coral: #ff9e91;
+      --color-on-accent: #142c35;
+      --color-muted: #bfd2d1;
+      --color-soft: #24424a;
+    }
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --color-bg: #f4f8f7;
+    --color-surface: #fff;
+    --color-text: #142c35;
+    --color-accent: #006d70;
+    --color-accent-strong: #00575a;
+    --color-border: #b7c9c8;
+    --color-coral: #a93424;
+    --color-on-accent: #fff;
+    --color-muted: #496168;
+    --color-soft: #e7efed;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-bg: #12262d;
+    --color-surface: #1c353d;
+    --color-text: #edf6f4;
+    --color-accent: #73d9d1;
+    --color-accent-strong: #a8eee7;
+    --color-border: #496168;
+    --color-coral: #ff9e91;
+    --color-on-accent: #142c35;
+    --color-muted: #bfd2d1;
+    --color-soft: #24424a;
+  }
+}

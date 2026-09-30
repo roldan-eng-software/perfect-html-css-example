@@ -1,0 +1,23 @@
+/* ==========================================================
+   FILE: card.css | ARQUIVO: card.css
+   LAYER: @layer components | CAMADA: @layer components
+   PURPOSE: reusable sample surfaces | PROPÓSITO: superfícies reutilizáveis
+   TECHNIQUES: logical properties, nesting | TÉCNICAS: propriedades lógicas, nesting
+   USED IN: demonstrations | USADO EM: demonstrações
+   ========================================================== */
+@layer components {
+  .card {
+    min-inline-size: 0;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-paper);
+    & > :where(* + *) {
+      margin-block-start: var(--space-3);
+    }
+  }
+  .card--featured {
+    border-inline-start: 0.35rem solid var(--color-coral);
+  }
+}

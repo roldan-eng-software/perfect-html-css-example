@@ -1,0 +1,39 @@
+/* ==========================================================
+   FILE: modal.css | ARQUIVO: modal.css
+   LAYER: @layer components | CAMADA: @layer components
+   PURPOSE: native popover surface with graceful entry | PROPÓSITO: popover nativo com entrada gradual
+   TECHNIQUES: popover, backdrop, starting-style | TÉCNICAS: popover, backdrop, starting-style
+   USED IN: overlay demo | USADO EM: demonstração de sobreposição
+   ========================================================== */
+@layer components {
+  .popover-panel {
+    position: fixed;
+    inset: 50% auto auto 50%;
+    translate: -50% -50%;
+    max-inline-size: min(34rem, calc(100vw - 2rem));
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-paper);
+  }
+  .popover-panel::backdrop {
+    background: var(--color-backdrop);
+    backdrop-filter: blur(3px);
+  }
+  @supports (transition-behavior: allow-discrete) {
+    .popover-panel {
+      transition:
+        opacity var(--duration-base),
+        display var(--duration-base) allow-discrete;
+    }
+    /* EN: @starting-style supplies the entry state for a top-layer element with no prior box.
+       PT: @starting-style fornece estado de entrada para um elemento da camada superior sem caixa anterior. */
+    @starting-style {
+      .popover-panel:popover-open {
+        opacity: 0;
+      }
+    }
+  }
+}

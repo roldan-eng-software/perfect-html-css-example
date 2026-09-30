@@ -1,0 +1,40 @@
+/* ==========================================================
+   FILE: main.css | ARQUIVO: main.css
+   LAYER: root | CAMADA: raiz
+   PURPOSE: load styles in the defined architecture order | PROPÓSITO: carregar estilos na ordem arquitetural
+   TECHNIQUES: @layer, @import | TÉCNICAS: @layer, @import
+   USED IN: index.html | USADO EM: index.html
+   ========================================================== */
+/* EN: Explicit layer order prevents specificity wars by making cascade priority predictable.
+   PT: A ordem explícita das camadas evita guerras de especificidade ao tornar a cascata previsível. */
+@import url("./00-settings/tokens.css");
+@import url("./00-settings/themes.css");
+@import url("./01-base/reset.css");
+@import url("./01-base/typography.css");
+@import url("./01-base/accessibility.css");
+@import url("./02-layout/container.css");
+@import url("./02-layout/grid.css");
+@import url("./02-layout/sections.css");
+@import url("./03-components/button.css");
+@import url("./03-components/card.css");
+@import url("./03-components/navbar.css");
+@import url("./03-components/accordion.css");
+@import url("./03-components/tabs.css");
+@import url("./03-components/modal.css");
+@import url("./03-components/badge.css");
+@import url("./03-components/code-peek.css");
+@import url("./03-components/footer.css");
+@import url("./05-demos/demo-grid.css");
+@import url("./05-demos/demo-flexbox.css");
+@import url("./05-demos/demo-animations.css");
+@import url("./05-demos/demo-scroll-driven.css");
+@import url("./05-demos/demo-container-queries.css");
+@import url("./05-demos/demo-modern-selectors.css");
+@import url("./05-demos/demo-color-functions.css");
+@import url("./05-demos/demo-clip-mask.css");
+@import url("./05-demos/demo-theming.css");
+@import url("./04-utilities/utilities.css");
+
+/* EN: The final statement declares the cascade priority after classic imports for older tooling.
+   PT: A declaração final ordena a cascata após imports clássicos, compatíveis com ferramentas antigas. */
+@layer settings, base, layout, components, demos, utilities;

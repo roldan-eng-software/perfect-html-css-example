@@ -1,0 +1,83 @@
+/* ==========================================================
+   FILE: demo-modern-selectors.css | ARQUIVO: demo-modern-selectors.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: make form states visible without script | PROPÓSITO: mostrar estados do formulário sem script
+   TECHNIQUES: :has(), :user-invalid, :focus-within | TÉCNICAS: :has(), :user-invalid, :focus-within
+   USED IN: selector and contact demos | USADO EM: seletores e contato
+   ========================================================== */
+@layer demos {
+  .selector-list :is(li, p):not(.is-muted) {
+    padding-inline-start: var(--space-2);
+  }
+  .selector-list li:nth-child(odd of li) {
+    border-inline-start: 3px solid var(--color-accent);
+  }
+  .contact-form {
+    display: grid;
+    gap: var(--space-4);
+    max-inline-size: 42rem;
+  }
+  .field {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .field input,
+  .field textarea {
+    inline-size: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+  .field:focus-within {
+    outline: 2px solid color-mix(in oklch, var(--color-accent) 45%, transparent);
+    outline-offset: 4px;
+  }
+  .field input:user-invalid,
+  .field textarea:user-invalid {
+    border-color: var(--color-danger);
+  }
+  .field input:user-valid {
+    border-color: var(--color-accent);
+  }
+  .contact-form:has(:user-invalid) .form-status {
+    color: var(--color-danger);
+  }
+  .field--floating {
+    position: relative;
+  }
+  .field--floating label {
+    position: absolute;
+    inset-inline-start: var(--space-3);
+    inset-block-start: var(--space-3);
+    color: var(--color-muted);
+    pointer-events: none;
+    transition:
+      transform var(--duration-fast),
+      font-size var(--duration-fast);
+  }
+  .field--floating input:not(:placeholder-shown) + label,
+  .field--floating input:focus + label {
+    transform: translateY(-1.35rem);
+    font-size: var(--text-xs);
+    background: var(--color-surface);
+  }
+  .contact-form input[type="checkbox"] {
+    accent-color: var(--color-accent);
+  }
+  @supports (field-sizing: content) {
+    .field textarea {
+      field-sizing: content;
+      min-block-size: 5rem;
+    }
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+  ::placeholder {
+    color: var(--color-muted);
+    opacity: 1;
+  }
+}

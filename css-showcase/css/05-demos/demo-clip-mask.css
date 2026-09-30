@@ -1,0 +1,98 @@
+/* ==========================================================
+   FILE: demo-clip-mask.css | ARQUIVO: demo-clip-mask.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: show clipped shapes, masks and layered effects | PROPÓSITO: demonstrar recortes, máscaras e efeitos
+   TECHNIQUES: clip-path, mask-image, url(), shape-outside | TÉCNICAS: clip-path, mask-image, url(), shape-outside
+   USED IN: shape and responsive demos | USADO EM: formas e responsividade
+   ========================================================== */
+@layer demos {
+  .shape-stage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    gap: var(--space-5);
+    align-items: center;
+  }
+  .shape-cut {
+    min-block-size: 12rem;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent),
+      var(--color-coral)
+    );
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 12% 82%);
+  }
+  /* EN: The local SVG becomes a mask; the gradient remains a useful fallback if masking is unsupported.
+      PT: O SVG local vira máscara; o gradiente continua como fallback se máscaras não forem suportadas. */
+  .shape-mask {
+    min-block-size: 12rem;
+    background: radial-gradient(
+      circle at 50% 45%,
+      var(--color-coral),
+      var(--color-accent)
+    );
+    -webkit-mask-image: url("../../assets/icons/spark.svg");
+    mask-image: url("../../assets/icons/spark.svg");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+  .shape-copy::before {
+    content: "";
+    float: inline-start;
+    inline-size: 7rem;
+    aspect-ratio: 1;
+    margin-inline-end: var(--space-3);
+    shape-outside: circle(50%);
+    border-radius: 50%;
+    background: var(--color-soft);
+  }
+  .shape-depth {
+    min-block-size: 5rem;
+    background: var(--color-soft);
+    box-shadow:
+      0 0.5rem 0 var(--color-accent),
+      0 1rem 0 var(--color-coral);
+    mix-blend-mode: multiply;
+    filter: saturate(0.8);
+    outline: 2px dashed var(--color-accent);
+    outline-offset: 0.5rem;
+  }
+  .viewport-sample {
+    min-block-size: min(30lvh, 18rem);
+    min-block-size: 20svh;
+    padding: var(--space-4);
+    background: radial-gradient(
+      circle at 100% 0,
+      var(--color-soft),
+      transparent 55%
+    );
+  }
+  @supports (height: 100dvh) {
+    .viewport-sample {
+      min-block-size: min(30dvh, 18rem);
+    }
+  }
+  @media (hover: hover) {
+    .shape-depth:hover {
+      filter: saturate(1.2);
+    }
+  }
+  /* EN: Print output hides controls; attr() adds link destinations where supported.
+      PT: A impressão oculta controles; attr() inclui destinos dos links quando suportado. */
+  @media print {
+    .site-header,
+    .site-footer,
+    .code-peek,
+    .reading-progress {
+      display: none;
+    }
+    body {
+      background: var(--color-print-bg);
+      color: var(--color-print-text);
+    }
+    a::after {
+      content: " (link)";
+      content: " (" attr(href, "link") ")";
+    }
+  }
+}

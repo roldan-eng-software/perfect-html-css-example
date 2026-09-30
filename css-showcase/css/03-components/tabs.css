@@ -1,0 +1,27 @@
+/* ==========================================================
+   FILE: tabs.css | ARQUIVO: tabs.css
+   LAYER: @layer components | CAMADA: @layer components
+   PURPOSE: anchor-based panels without script | PROPÓSITO: painéis por âncora sem script
+   TECHNIQUES: :target, scroll-margin | TÉCNICAS: :target, scroll-margin
+   USED IN: tabs demo | USADO EM: demonstração de abas
+   ========================================================== */
+@layer components {
+  .tabs__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-end: var(--space-4);
+  }
+  .tabs__panel {
+    display: none;
+    padding: var(--space-4);
+    background: var(--color-soft);
+  }
+  .tabs__panel:target,
+  .tabs__panel:first-of-type {
+    display: block;
+  }
+  .tabs:has(.tabs__panel:target) .tabs__panel:first-of-type:not(:target) {
+    display: none;
+  }
+}

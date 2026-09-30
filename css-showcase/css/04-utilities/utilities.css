@@ -1,0 +1,27 @@
+/* ==========================================================
+   FILE: utilities.css | ARQUIVO: utilities.css
+   LAYER: @layer utilities | CAMADA: @layer utilities
+   PURPOSE: small composable helpers | PROPÓSITO: utilitários pequenos e combináveis
+   TECHNIQUES: low-specificity utility classes | TÉCNICAS: classes de baixa especificidade
+   USED IN: page markup | USADO EM: marcação da página
+   ========================================================== */
+@layer utilities {
+  .stack > * + * {
+    margin-block-start: var(--space-4);
+  }
+  .cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .text-muted {
+    color: var(--color-muted);
+  }
+  .text-small {
+    font-size: var(--text-sm);
+  }
+  .flow-space {
+    margin-block-start: var(--space-6);
+  }
+}

@@ -1,0 +1,32 @@
+/* ==========================================================
+   FILE: demo-container-queries.css | ARQUIVO: demo-container-queries.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: adapt a card to its available component width | PROPÓSITO: adaptar cartão à largura do componente
+   TECHNIQUES: container-type, @container | TÉCNICAS: container-type, @container
+   USED IN: container-query demo | USADO EM: demonstração de consultas
+   ========================================================== */
+@layer demos {
+  .container-frame {
+    container-type: inline-size;
+    resize: horizontal;
+    overflow: auto;
+    max-inline-size: 100%;
+    min-inline-size: 16rem;
+    padding: var(--space-3);
+    border: 1px dashed var(--color-accent);
+  }
+  .query-card {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--color-soft);
+  }
+  /* EN: Container queries follow component space rather than the viewport breakpoint.
+      PT: Consultas de container acompanham o espaço do componente, não o breakpoint da viewport. */
+  @container (min-width: 34rem) {
+    .query-card {
+      grid-template-columns: 8rem 1fr;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+/* ==========================================================
+  FILE: tokens.css | ARQUIVO: tokens.css
+  LAYER: @layer settings | CAMADA: @layer settings
+  PURPOSE: centralize reusable design values | PROPÓSITO: concentrar valores reutilizáveis
+  TECHNIQUES: custom properties, clamp(), color-mix() | TÉCNICAS: custom properties, clamp(), color-mix()
+  USED IN: all components and demos | USADO EM: todos os componentes e demonstrações
+   ========================================================== */
+@layer settings {
+  :root {
+    color-scheme: light dark;
+    /* EN: Semantic tokens keep component declarations stable when the palette changes.
+     PT: Tokens semânticos mantêm as declarações dos componentes estáveis ao trocar a paleta. */
+    --color-ink: #142c35;
+    --color-paper: #f4f8f7;
+    --color-white: #fff;
+    --color-teal: #006d70;
+    --color-coral: #a93424;
+    --color-on-accent: #fff;
+    --color-line: #b7c9c8;
+    --color-muted: #496168;
+    --color-code: #e7efed;
+    --color-backdrop: rgb(8 27 31 / 65%);
+    --color-print-bg: #fff;
+    --color-print-text: #000;
+    --color-demo-oklch: oklch(72% 0.14 188);
+    --color-demo-fallback: #4b9a99;
+    --color-gold: #e7bd3d;
+    --color-sample-night: #203a41;
+    --color-sample-night-text: #f2f8f6;
+    --color-bg: var(--color-paper);
+    --color-surface: var(--color-white);
+    --color-text: var(--color-ink);
+    --color-accent: var(--color-teal);
+    --color-accent-strong: #00575a;
+    --color-danger: #a12b24;
+    --color-border: var(--color-line);
+    --color-soft: #e7efed;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --space-9: 6rem;
+    --space-10: 8rem;
+    --font-body: "Segoe UI", "Trebuchet MS", sans-serif;
+    --font-display: "Palatino Linotype", "Book Antiqua", serif;
+    --font-mono: "Cascadia Code", "Courier New", monospace;
+    --text-xs: 0.78rem;
+    --text-sm: 0.9rem;
+    --text-md: 1rem;
+    /* EN: clamp() caps fluid type so it scales without becoming tiny or oversized.
+       PT: clamp() limita a tipografia fluida para que ela não fique pequena ou exagerada. */
+    --text-lg: clamp(1.2rem, 2vw, 1.55rem);
+    --text-xl: clamp(1.8rem, 5vw, 3.6rem);
+    --text-display: clamp(2.65rem, 8vw, 6.7rem);
+    --radius-sm: 0.25rem;
+    --radius-md: 0.65rem;
+    --radius-pill: 999px;
+    --shadow-paper: 0 1rem 2.5rem rgb(20 44 53 / 12%);
+    --duration-fast: 160ms;
+    --duration-base: 280ms;
+    /* EN: cubic-bezier() defines a reusable timing curve; linear() refines it in newer engines.
+       PT: cubic-bezier() define uma curva reutilizável; linear() a refina em navegadores recentes. */
+    --ease-standard: cubic-bezier(0.2, 0.75, 0.25, 1);
+    --ease-elastic: cubic-bezier(0.2, 0.75, 0.25, 1);
+    --ease-elastic: linear(0, 0.2 15%, 0.85 80%, 1);
+    --z-header: 10;
+    --z-overlay: 20;
+    --content-width: 76rem;
+  }
+  /* EN: light-dark() follows color-scheme while the preceding values remain its fallback.
+     PT: light-dark() acompanha color-scheme e os valores anteriores servem de fallback. */
+  @supports (color: light-dark(white, black)) {
+    :root {
+      --color-bg: light-dark(var(--color-paper), #12262d);
+      --color-surface: light-dark(var(--color-white), #1c353d);
+      --color-text: light-dark(var(--color-ink), #edf6f4);
+      --color-accent: light-dark(var(--color-teal), #73d9d1);
+      --color-accent-strong: light-dark(#00575a, #a8eee7);
+      --color-danger: light-dark(#a12b24, #ff9e91);
+      --color-border: light-dark(var(--color-line), #496168);
+      --color-coral: light-dark(#a93424, #ff9e91);
+      --color-on-accent: light-dark(#fff, #142c35);
+      --color-muted: light-dark(#496168, #bfd2d1);
+      --color-soft: color-mix(
+        in oklch,
+        var(--color-accent) 10%,
+        var(--color-surface)
+      );
+    }
+  }
+}

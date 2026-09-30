@@ -1,0 +1,22 @@
+/* ==========================================================
+  FILE: container.css | ARQUIVO: container.css
+  LAYER: @layer layout | CAMADA: @layer layout
+  PURPOSE: constrain width and preserve safe spacing | PROPÓSITO: limitar largura e preservar respiro
+  TECHNIQUES: min(), max(), env(), calc() | TÉCNICAS: min(), max(), env(), calc()
+  USED IN: header, content, and footer | USADO EM: cabeçalho, conteúdo e rodapé
+   ========================================================== */
+@layer layout {
+  /* EN: min() and calc() fluidly size the container; var() fallbacks protect missing tokens.
+    PT: min() e calc() dimensionam o container; fallbacks de var() protegem tokens ausentes. */
+  .container {
+    inline-size: min(
+      calc(100% - 2 * var(--space-4, 1rem)),
+      var(--content-width, 76rem)
+    );
+    margin-inline: auto;
+    /* EN: env() respects device safe areas; its fallback is used on ordinary displays.
+     PT: env() respeita áreas seguras do dispositivo; o fallback vale em telas comuns. */
+    padding-inline: env(safe-area-inset-left, 0px)
+      env(safe-area-inset-right, 0px);
+  }
+}

@@ -1,0 +1,73 @@
+/* ==========================================================
+   FILE: demo-scroll-driven.css | ARQUIVO: demo-scroll-driven.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: progressively enhance scroll-linked reading cues | PROPÓSITO: aprimorar progressivamente pistas de leitura
+   TECHNIQUES: scroll(), view(), @supports | TÉCNICAS: scroll(), view(), @supports
+   USED IN: reading progress and reveal | USADO EM: progresso e entrada
+   ========================================================== */
+@layer demos {
+  .reading-progress {
+    display: none;
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: var(--z-overlay);
+    inline-size: 100%;
+    block-size: 0.25rem;
+    transform: scaleX(0.35);
+    transform-origin: left;
+    background: var(--color-coral);
+  }
+  .reveal-sample {
+    padding: var(--space-5);
+    border-inline-start: 0.3rem solid var(--color-accent);
+    background: var(--color-soft);
+  }
+  .snap-track {
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    padding-block: var(--space-3);
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--space-4);
+  }
+  .snap-card {
+    flex: 0 0 min(82%, 19rem);
+    min-block-size: 11rem;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    scroll-snap-align: start;
+  }
+  @supports (animation-timeline: scroll()) {
+    .reading-progress {
+      display: block;
+      animation: reading-fill linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes reading-fill {
+      to {
+        transform: scaleX(1);
+      }
+    }
+  }
+  @supports (animation-timeline: view()) {
+    /* EN: This reveal is optional; the base rule stays visible when view timelines are unsupported.
+       PT: Esta entrada é opcional; a regra base permanece visível sem view timelines. */
+    .reveal-sample {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    @keyframes reveal-in {
+      from {
+        opacity: 0.35;
+        transform: translateY(1rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}

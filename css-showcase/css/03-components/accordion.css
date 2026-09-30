@@ -1,0 +1,27 @@
+/* ==========================================================
+   FILE: accordion.css | ARQUIVO: accordion.css
+   LAYER: @layer components | CAMADA: @layer components
+   PURPOSE: native exclusive disclosure | PROPÓSITO: conteúdo expansível nativo exclusivo
+   TECHNIQUES: details name, marker | TÉCNICAS: details name, marcador
+   USED IN: FAQ demo | USADO EM: demonstração de FAQ
+   ========================================================== */
+@layer components {
+  .accordion {
+    border-block-start: 1px solid var(--color-border);
+  }
+  .accordion details {
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--color-border);
+  }
+  .accordion summary {
+    color: var(--color-accent);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .accordion summary::marker {
+    color: var(--color-coral);
+  }
+  .accordion details > p {
+    padding-block-start: var(--space-3);
+  }
+}

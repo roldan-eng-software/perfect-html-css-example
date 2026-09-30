@@ -1,0 +1,59 @@
+/* ==========================================================
+   FILE: demo-grid.css | ARQUIVO: demo-grid.css
+   LAYER: @layer demos | CAMADA: @layer demos
+   PURPOSE: demonstrate named and automatic grid tracks | PROPÓSITO: demonstrar áreas e trilhas automáticas
+   TECHNIQUES: grid-template-areas, dense, subgrid | TÉCNICAS: grid-template-areas, dense, subgrid
+   USED IN: Grid section | USADO EM: seção Grid
+   ========================================================== */
+@layer demos {
+  .demo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "wide" "tall" "small" "nested";
+    grid-auto-flow: dense;
+    gap: var(--space-3);
+  }
+  .demo-grid__tile {
+    display: grid;
+    place-items: end start;
+    min-block-size: 8rem;
+    padding: var(--space-4);
+    aspect-ratio: 4 / 3;
+    background: var(--color-soft);
+    border: 1px solid var(--color-border);
+  }
+  .demo-grid__tile--wide {
+    grid-area: wide;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent),
+      var(--color-accent-strong)
+    );
+    color: var(--color-on-accent, var(--color-white));
+  }
+  .demo-grid__tile--tall {
+    grid-area: tall;
+    min-block-size: 12rem;
+  }
+  .demo-grid__tile--small {
+    grid-area: small;
+  }
+  .demo-grid__tile--nested {
+    grid-area: nested;
+  }
+  /* EN: The breakpoint adds columns only when both tracks fit without overflow.
+     PT: O breakpoint cria colunas apenas quando ambas as trilhas cabem sem transbordar. */
+  @media (min-width: 38rem) {
+    .demo-grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+      grid-template-areas: "wide wide" "tall small" "nested nested";
+    }
+  }
+  @supports (grid-template-rows: subgrid) {
+    .demo-grid__tile--nested {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 2;
+    }
+  }
+}
