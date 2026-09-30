@@ -68,9 +68,9 @@ To publish, create a GitHub repository and enable Pages from the root of its def
 
 ## About the author
 
-- **Name:** [Your Name]
+- **Name:** Sandro Roldan
 - **Brand:** Roldan Eng Software
-- **Website:** [Add your website]
-- **Email:** [Add a contact email]
-- **GitHub:** [Add your GitHub profile]
-- **LinkedIn:** [Add your LinkedIn profile]
+- **Website:** https://chegounaweb.vercel.app
+- **Email:** roldan.eng.software@gmail.com
+- **GitHub:** https://github.com/roldan-eng-software
+- **LinkedIn:** https://www.linkedin.com/in/sandro-roldan-b8721a3b5
