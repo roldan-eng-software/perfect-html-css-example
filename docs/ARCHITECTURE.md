@@ -18,7 +18,9 @@ flowchart TD
 ## File map
 
 ```text
-css-showcase/
+.
+├── .editorconfig
+├── .gitignore
 ├── index.html
 ├── README.md
 ├── LICENSE

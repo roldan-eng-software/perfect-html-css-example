@@ -7,7 +7,9 @@
 
 **A bilingual, JavaScript-free portfolio of practical CSS techniques.** The default experience is US English; use the language controls in the sticky header to switch to Brazilian Portuguese. The switch is implemented with native radio inputs and CSS.
 
-**GitHub Pages:** [Open the live project](https://your-user.github.io/css-showcase/) (replace this placeholder after publishing).
+All project files live at the repository root; open `index.html` directly.
+
+**GitHub Pages:** [Open the live project](https://roldan-eng-software.github.io/perfect-html-css-example/) (enable Pages to publish this URL).
 
 **Screenshot:** _Add a screenshot of the finished page here._
 
