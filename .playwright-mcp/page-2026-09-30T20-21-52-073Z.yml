@@ -1,0 +1,259 @@
+- generic [active] [ref=f2e1]:
+  - radio "EN" [checked] [ref=f2e2]
+  - radio "PT-BR" [ref=f2e3]
+  - generic [ref=f2e5]:
+    - banner [ref=f2e6]:
+      - generic [ref=f2e7]:
+        - link "CSS / FIELD NOTES" [ref=f2e8] [cursor=pointer]:
+          - /url: "#top"
+        - group "Choose language / Escolha o idioma" [ref=f2e9]:
+          - generic [ref=f2e11] [cursor=pointer]: EN
+          - generic [ref=f2e12] [cursor=pointer]: PT-BR
+        - navigation [ref=f2e13]:
+          - generic [ref=f2e14] [cursor=pointer]:
+            - text: ☰
+            - generic [ref=f2e15]: Menu
+    - main [ref=f2e16]:
+      - region [ref=f2e17]:
+        - generic [ref=f2e19]:
+          - paragraph [ref=f2e20]: A living CSS portfolio
+          - heading "CSS, made visible." [level=1] [ref=f2e21]
+          - paragraph [ref=f2e22]: A field guide to modern layout, motion, color, and interaction, built with the browser's native tools.
+          - generic [ref=f2e23]:
+            - link "Explore the demos" [ref=f2e24] [cursor=pointer]:
+              - /url: "#grid"
+            - link "Read the source map" [ref=f2e26] [cursor=pointer]:
+              - /url: "#architecture"
+          - paragraph [ref=f2e28]: HTML5 + CSS3 · no JavaScript · no dependencies
+        - group [ref=f2e29]:
+          - generic "View the CSS for this section" [ref=f2e30] [cursor=pointer]
+      - region [ref=f2e31]:
+        - heading "Sticky navigation, native menu" [level=2] [ref=f2e32]
+        - paragraph [ref=f2e33]: The header stays in view with a translucent surface. On narrow screens, a labeled checkbox reveals the links without a script.
+        - paragraph [ref=f2e34]:
+          - generic [ref=f2e35]: "position: sticky"
+          - generic [ref=f2e36]: backdrop-filter
+          - generic [ref=f2e37]: checkbox + CSS
+        - group [ref=f2e38]:
+          - generic "View the CSS for this section" [ref=f2e39] [cursor=pointer]
+      - region [ref=f2e40]:
+        - heading "CSS Grid" [level=2] [ref=f2e41]
+        - paragraph [ref=f2e42]: Named areas make the composition readable; auto-fit and minmax let columns adapt. Subgrid is progressively enhanced where available.
+        - generic "A responsive CSS Grid sample / Amostra responsiva de CSS Grid" [ref=f2e43]:
+          - article [ref=f2e44]:
+            - generic [ref=f2e45]: "Named area: wide"
+          - article [ref=f2e46]:
+            - generic [ref=f2e47]: Aspect ratio
+          - article [ref=f2e48]:
+            - generic [ref=f2e49]: Auto-fit track
+          - article [ref=f2e50]:
+            - generic [ref=f2e51]: Subgrid row
+        - group [ref=f2e52]:
+          - generic "View the CSS for this section" [ref=f2e53] [cursor=pointer]
+      - region [ref=f2e54]:
+        - heading "Flexbox" [level=2] [ref=f2e55]
+        - paragraph [ref=f2e56]: Items wrap naturally and share available space. Their source order remains meaningful when the visual order changes.
+        - generic [ref=f2e57]:
+          - article [ref=f2e58]:
+            - strong [ref=f2e59]: Flexible basis
+            - paragraph [ref=f2e60]: A useful minimum width.
+          - article [ref=f2e61]:
+            - strong [ref=f2e62]: Wrapped layout
+            - paragraph [ref=f2e63]: No fixed card widths.
+          - article [ref=f2e64]:
+            - strong [ref=f2e65]: Responsive order
+            - paragraph [ref=f2e66]: Returns to source order on mobile.
+        - group [ref=f2e67]:
+          - generic "View the CSS for this section" [ref=f2e68] [cursor=pointer]
+      - region [ref=f2e69]:
+        - heading "Tokens and color themes" [level=2] [ref=f2e70]
+        - paragraph [ref=f2e71]: Choose a preview. The radio state updates page-level custom properties through :has(), while semantic tokens keep component rules unchanged.
+        - generic [ref=f2e72]:
+          - radio "Light" [checked] [ref=f2e73]
+          - generic [ref=f2e74] [cursor=pointer]: Light
+          - radio "Dark" [ref=f2e75]
+          - generic [ref=f2e76] [cursor=pointer]: Dark
+          - article [ref=f2e77]:
+            - strong [ref=f2e78]: Semantic surface
+            - paragraph [ref=f2e79]: The page and this sample share the same color tokens.
+        - group [ref=f2e80]:
+          - generic "View the CSS for this section" [ref=f2e81] [cursor=pointer]
+      - region [ref=f2e82]:
+        - heading "Fluid type that holds its measure" [level=2] [ref=f2e83]
+        - paragraph [ref=f2e84]: clamp() scales the heading between useful limits; ch keeps body copy from stretching too far.
+        - article [ref=f2e85]:
+          - heading "A heading tuned to its space" [level=3] [ref=f2e86]
+          - paragraph [ref=f2e87]: Readable type is a layout decision. A measured line length, balanced wrapping, and a fluid scale help the same words work across screens.
+        - group [ref=f2e88]:
+          - generic "View the CSS for this section" [ref=f2e89] [cursor=pointer]
+      - region [ref=f2e90]:
+        - heading "Motion with a small footprint" [level=2] [ref=f2e91]
+        - paragraph [ref=f2e92]: These samples animate transform and opacity rather than layout. Reduced-motion preferences disable nonessential movement.
+        - generic "Animated CSS samples / Amostras animadas de CSS" [ref=f2e93]
+        - group [ref=f2e98]:
+          - generic "View the CSS for this section" [ref=f2e99] [cursor=pointer]
+      - region [ref=f2e100]:
+        - heading "Scroll-driven enhancement" [level=2] [ref=f2e101]
+        - paragraph [ref=f2e102]: Where supported, the thin reading indicator follows the document and this sample reveals as it enters view. Without support, the page remains fully readable.
+        - article [ref=f2e103]:
+          - strong [ref=f2e104]: Progressive enhancement
+          - paragraph [ref=f2e105]: Scroll-linked effects are optional, not required to understand the content.
+        - group [ref=f2e106]:
+          - generic "View the CSS for this section" [ref=f2e107] [cursor=pointer]
+      - region [ref=f2e108]:
+        - heading "A native scroll-snap rail" [level=2] [ref=f2e109]
+        - paragraph [ref=f2e110]: Scroll horizontally or use the keyboard. Snap alignment provides a clear stopping point without carousel scripting.
+        - generic "Scrollable CSS samples / Amostras CSS roláveis" [ref=f2e111]:
+          - article [ref=f2e112]:
+            - strong [ref=f2e113]: One / Layout
+          - article [ref=f2e114]:
+            - strong [ref=f2e115]: Two / Color
+          - article [ref=f2e116]:
+            - strong [ref=f2e117]: Three / Motion
+        - group [ref=f2e118]:
+          - generic "View the CSS for this section" [ref=f2e119] [cursor=pointer]
+      - region [ref=f2e120]:
+        - heading "Container queries" [level=2] [ref=f2e121]
+        - paragraph [ref=f2e122]: Resize the dashed frame. Unlike a media query, this card responds to its own container, so it can adapt wherever it is placed.
+        - generic "Resizable container sample / Amostra de container redimensionável" [ref=f2e123]:
+          - article [ref=f2e124]:
+            - generic [ref=f2e125]: "@container"
+            - paragraph [ref=f2e126]: My layout follows the width of the frame around me.
+        - group [ref=f2e127]:
+          - generic "View the CSS for this section" [ref=f2e128] [cursor=pointer]
+      - region [ref=f2e129]:
+        - heading "Selectors that express intent" [level=2] [ref=f2e130]
+        - paragraph [ref=f2e131]: :is(), :where(), :not(), :has(), :focus-within, :user-invalid, ::marker, and :nth-child() reduce markup-specific styling.
+        - list [ref=f2e132]:
+          - listitem [ref=f2e133]: Grouped selectors stay easy to scan.
+          - listitem [ref=f2e134]: A muted item opts out.
+          - listitem [ref=f2e135]: Keyboard focus is never hidden.
+        - group [ref=f2e136]:
+          - generic "View the CSS for this section" [ref=f2e137] [cursor=pointer]
+      - region [ref=f2e138]:
+        - heading "A form with native validation states" [level=2] [ref=f2e139]
+        - paragraph [ref=f2e140]: This form is a CSS demo only; it does not send or store data. Required fields expose browser validation, and CSS styles the states.
+        - generic [ref=f2e141]:
+          - generic [ref=f2e142]:
+            - textbox "Your name" [ref=f2e143]:
+              - /placeholder: " "
+            - generic: Your name
+          - generic [ref=f2e144]:
+            - generic [ref=f2e145]: Email address
+            - textbox "Email address" [ref=f2e146]:
+              - /placeholder: name@example.com
+          - generic [ref=f2e147]:
+            - generic [ref=f2e148]: Message
+            - textbox "Message" [ref=f2e149]:
+              - /placeholder: " "
+          - generic [ref=f2e150]:
+            - checkbox "I understand this demo does not submit data." [ref=f2e151]
+            - generic [ref=f2e152]: I understand this demo does not submit data.
+          - button "Check the form" [ref=f2e153]
+          - paragraph [ref=f2e155]: All fields are local examples; no endpoint is configured.
+        - group [ref=f2e156]:
+          - generic "View the CSS for this section" [ref=f2e157] [cursor=pointer]
+      - region [ref=f2e158]:
+        - heading "Disclosure and anchor tabs" [level=2] [ref=f2e159]
+        - paragraph [ref=f2e160]: The browser owns the open state. The details name attribute requests exclusive disclosure where supported; hash targets provide simple tabs.
+        - generic [ref=f2e161]:
+          - group [ref=f2e162]:
+            - generic "Why no JavaScript?" [ref=f2e163] [cursor=pointer]
+          - group [ref=f2e164]:
+            - generic "What about older browsers?" [ref=f2e165] [cursor=pointer]
+        - generic [ref=f2e166]:
+          - navigation [ref=f2e167]:
+            - link "Layout" [ref=f2e168] [cursor=pointer]:
+              - /url: "#tab-layout"
+            - link "Cascade" [ref=f2e169] [cursor=pointer]:
+              - /url: "#tab-cascade"
+          - article [ref=f2e170]:
+            - strong [ref=f2e171]: Layout layer
+            - paragraph [ref=f2e172]: Containers and section rhythm.
+        - group [ref=f2e173]:
+          - generic "View the CSS for this section" [ref=f2e174] [cursor=pointer]
+      - region [ref=f2e175]:
+        - heading "Popover with native dismissal" [level=2] [ref=f2e176]
+        - paragraph [ref=f2e177]: The Popover API provides top-layer placement and light dismissal. The browser handles open and close without a custom event handler.
+        - button "Open the CSS note" [ref=f2e178]
+        - group [ref=f2e180]:
+          - generic "View the CSS for this section" [ref=f2e181] [cursor=pointer]
+      - region [ref=f2e182]:
+        - heading "Shapes, masks, and depth" [level=2] [ref=f2e183]
+        - paragraph [ref=f2e184]: CSS shapes alter the silhouette or text flow while preserving meaningful HTML. The star mask is a small local SVG.
+        - generic [ref=f2e185]:
+          - img "Clipped gradient shape / Forma em gradiente recortada" [ref=f2e186]
+          - img "Star-shaped color mask / Máscara de cor em forma de estrela" [ref=f2e187]
+          - paragraph [ref=f2e188]: Text can flow around a CSS circle instead of forcing every image into a rectangular box.
+        - group [ref=f2e190]:
+          - generic "View the CSS for this section" [ref=f2e191] [cursor=pointer]
+      - region [ref=f2e192]:
+        - heading "Modern color functions" [level=2] [ref=f2e193]
+        - paragraph [ref=f2e194]: OKLCH, relative colors, and color-mix make relationships explicit. A solid fallback protects browsers without OKLCH.
+        - generic [ref=f2e195]:
+          - generic [ref=f2e196]: OKLCH
+          - generic [ref=f2e197]: Color mix
+          - generic [ref=f2e198]: Relative color
+          - generic [ref=f2e199]: Gradient in OKLCH
+          - img "Animated conic gradient / Gradiente cônico animado" [ref=f2e200]
+          - img "Radial gradient / Gradiente radial" [ref=f2e201]
+        - group [ref=f2e202]:
+          - generic "View the CSS for this section" [ref=f2e203] [cursor=pointer]
+      - region [ref=f2e204]:
+        - heading "Responsive by available space" [level=2] [ref=f2e205]
+        - paragraph [ref=f2e206]: The layout uses content-driven sizing, small-screen breakpoints, safe-area insets, and viewport units with fallbacks. Print styles remove interface-only controls.
+        - article [ref=f2e207]:
+          - strong [ref=f2e208]: A viewport-sized sample
+          - paragraph [ref=f2e209]: Try narrow and wide screens; the content remains within the viewport.
+        - group [ref=f2e210]:
+          - generic "View the CSS for this section" [ref=f2e211] [cursor=pointer]
+      - region [ref=f2e212]:
+        - heading "How this page is built" [level=2] [ref=f2e213]
+        - paragraph [ref=f2e214]: Each layer has a job, and every demo points to the stylesheet that owns its behavior.
+        - table [ref=f2e216]:
+          - rowgroup [ref=f2e217]:
+            - row [ref=f2e218]:
+              - columnheader "Demonstration" [ref=f2e219]
+              - columnheader "Source file" [ref=f2e220]
+          - rowgroup [ref=f2e221]:
+            - row [ref=f2e222]:
+              - rowheader "Grid" [ref=f2e223]
+              - cell [ref=f2e224]:
+                - link "demo-grid.css" [ref=f2e225] [cursor=pointer]:
+                  - /url: css/05-demos/demo-grid.css
+            - row [ref=f2e226]:
+              - rowheader "Flexbox" [ref=f2e227]
+              - cell [ref=f2e228]:
+                - link "demo-flexbox.css" [ref=f2e229] [cursor=pointer]:
+                  - /url: css/05-demos/demo-flexbox.css
+            - row [ref=f2e230]:
+              - rowheader "Motion and scroll" [ref=f2e231]
+              - cell [ref=f2e232]:
+                - link "demo-scroll-driven.css" [ref=f2e233] [cursor=pointer]:
+                  - /url: css/05-demos/demo-scroll-driven.css
+            - row [ref=f2e234]:
+              - rowheader "Themes and color" [ref=f2e235]
+              - cell [ref=f2e236]:
+                - link "demo-color-functions.css" [ref=f2e237] [cursor=pointer]:
+                  - /url: css/05-demos/demo-color-functions.css
+            - row [ref=f2e238]:
+              - rowheader "Forms and selectors" [ref=f2e239]
+              - cell [ref=f2e240]:
+                - link "demo-modern-selectors.css" [ref=f2e241] [cursor=pointer]:
+                  - /url: css/05-demos/demo-modern-selectors.css
+        - group [ref=f2e242]:
+          - generic "View the CSS for this section" [ref=f2e243] [cursor=pointer]
+    - contentinfo [ref=f2e244]:
+      - generic [ref=f2e245]:
+        - paragraph [ref=f2e246]:
+          - strong [ref=f2e247]: CSS Showcase
+          - text: A practical portfolio by Roldan Eng Software.
+        - navigation [ref=f2e248]:
+          - link "GitHub" [ref=f2e249] [cursor=pointer]:
+            - /url: https://github.com/your-user
+          - link "LinkedIn" [ref=f2e250] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/your-profile
+          - link "MIT License" [ref=f2e251] [cursor=pointer]:
+            - /url: LICENSE
+        - group [ref=f2e252]:
+          - generic "View the CSS for this section" [ref=f2e253] [cursor=pointer]
